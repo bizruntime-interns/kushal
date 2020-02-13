@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Details</title>
+    </head>
+    <body>
+        <form name="loginForm" method="post" action="login.php">
+            <table width="20%" bgcolor="yellow" align="center">
+                <tr>
+                    <td colspan=3><center><font size=4><b>DETAILS</b></font></center></td>
+                </tr>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" size=50 name="fname"></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" size=50 name="lname"></td>
+                </tr>
+                <tr>
+                    <td>Branch:</td>
+                    <td><input type="radio">CSE</td><br/>
+                    <td><input type="radio">ECE</td><br/>
+                    <td><input type="radio">CIV</td>
+                    
+                </tr>
+                <tr>
+                    <td>Email ID:</td>
+                    <td><input type="text" size=50 name="email"></td>
+                </tr>
+                <tr>
+                    <td ><input type="Reset"></td>
+                    <td><input type="submit" onclick="return check(this.form)" value="submit"></td>
+                </tr>
+                
+            </table>
+        </form>
+        <script language="javascript">
+        function check(form)
+        {       
+           if(form.fname.length == 0 || form.lname.lenght == 0 || form.email.length == 0) 
+           {
+               alert("field cannot be empty");
+               return false;
+           }
+           return true;
+        }
+        </script>
+    </body>
+</html>

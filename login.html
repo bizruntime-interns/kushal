@@ -1,0 +1,61 @@
+<html>
+<title>Forms</title>
+<link rel = "stylesheet"  href="https://www.youtube.com/watch?v=zvt8ff3d63Q">
+
+<body>
+	<h1>forms</h1>
+	<ul id=form-messages>
+	<div class="forms">
+		<label for="username">username</label>
+		<input type="text" id="username"> 
+		<label for="password">password</label>
+		<input type="text" id="password"> 
+		<button type="submit" id="btn_submit">login</button>
+	</div>
+	<script type="text/javascript">
+		const form = {
+		username : document.getElementById('username'),
+		password : document.getElementById('password'),
+		submit : document.getElementById('btn_submit'),
+		messages : document.getElementById('form-messages'),
+		};
+		form.submit.addEventListener('click', () => {
+			const request = new XMLHttpRequest();
+			request.onload = () => {
+				let responseObject = null;
+				try {
+					responseObject = JSON.parse(request.responseText);
+				} catch(e) {
+					console.error('could not parse JSON');
+
+				}
+				if(responseObject){
+					handleResponse(responseObject);
+				}
+
+
+			};
+			const requestData = 'username=${form.username.value}&password=${form.password.value}';
+			constant.log(requestData);
+			request.open('post','login.php');
+			request.setRequestHeader('content-type','application/x-www-form-urlencoded');
+			request.send(requestData);
+		});
+
+		function handleResponse(responseObject){
+			if(responseObject.ok) {
+				location.href = 'forms2.html';
+				
+			} else {
+				while(form.messages.firstChild) {
+					form.messages.removeChild(form.messages.firstChild);
+				}
+				responseObject.messages.forEach((message) => {
+					const li = document.createElement(li);
+					li.textContent = message;
+					form.messages.appendChild(li);
+				});
+			}
+		}
+	</script>
+</body>

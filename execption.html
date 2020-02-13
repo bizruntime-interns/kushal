@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Execption Handling</h1>
+        <script>
+        class ValidationError extends Error {
+        constructor(message) {
+        super(message); 
+        this.name = "ValidationError"; 
+    }
+}
+
+function test() {
+  throw new ValidationError("Whoops!");
+}
+
+try {
+        test();
+    }   catch(err) {
+        alert(err.message); 
+        alert(err.name);
+        alert(err.stack);
+    }
+    </script>
+</body>
+</html>

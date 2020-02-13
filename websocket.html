@@ -1,0 +1,30 @@
+<html>
+    <title>
+        websocket it is
+    </title>
+        <body>
+            <h1>websocket </h1>
+            <div id ='wesocket'></div>
+            <script type="text/javascript">
+            var socket = new WebSocket('ws://localhost:8080/');
+            socket.onopen = function ()
+            {
+                console.log('Connected!'); 
+            };
+            socket.onmessage = function (event) 
+            {
+                console.log('Received data: ' + event.data);
+                socket.close();
+             };
+            socket.onclose = function()
+            {
+                console.log('lost connection');
+            }
+            socket.onerror = function()
+            {
+                console.log('error');
+            }
+            socket.send('fvjhvfkhgljg');
+            </script> 
+        </body>
+    </html>
